@@ -9,6 +9,10 @@ namespace Shop.Web.Data.Entities
         // Clave primaria
         public int Id { get; set; }
 
+        // tamaño maximo de 50
+        // Volver campo obligatorio
+        [MaxLength(50 ,ErrorMessage = "The field (0) Only can (1) Characters Length.")]
+        [Required]
         public string Name { get; set; }
 
         // Darle formato a la columna Price. Que muestre la moneda que esta configurada el sistema
@@ -20,11 +24,13 @@ namespace Shop.Web.Data.Entities
         [Display(Name = "Image")]
         public string ImageUrl { get; set; }
 
+        // DateTime? el atributo puede ser nulo
         [Display(Name = "Last Purchase")]
-        public DateTime LastPurchase { get; set; }
+        public DateTime? LastPurchase { get; set; }
 
+        // DateTime? el atributo puede ser nulo
         [Display(Name = "Last Sale")]
-        public DateTime LastSale { get; set; }
+        public DateTime? LastSale { get; set; }
 
         [Display(Name = "Is Availabe?")]
         public bool IsAvailabe { get; set; }

@@ -32,6 +32,13 @@ namespace Shop.Web
                 cfg.UseSqlServer(this.Configuration.GetConnectionString("DefaultConnection"));
             });
 
+            // realizamos insercción de SeedDb para inicializar la lista de productos si esta vacio
+            // tiene un ciclo de vida mas corto (ADDTRANSIENT)
+            services.AddTransient<SeedDb>();
+
+            // realizamos insercción de repositorio
+            // TIENE UN CICLO QUE PERMANECE LA INSERCCIÓN TODO EL TIEMPO LAS VECES QUE SEA
+            services.AddScoped<IRepository, Repository>();
 
             services.Configure<CookiePolicyOptions>(options =>
             {
