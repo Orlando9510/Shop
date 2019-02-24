@@ -42,6 +42,21 @@ namespace Shop.Web.Data.Entities
         // Hace una relación de uno a varios con la tabla de usuarios
         // 1 usuario tiene muchos productos
         public User User {get; set;}
+        
+        // propiedad de lectura - no se necesita hacer migración de base de datos porque es de lectura
+        public string ImageFullPath
+        {
+            get
+            {
+                if (string.IsNullOrEmpty(this.ImageUrl))
+                {
+                    return null;
+                }
+
+                return $"https://shopOrla.azurewebsites.net{this.ImageUrl.Substring(1)}";
+            }
+        }
+
     }
 
 }
